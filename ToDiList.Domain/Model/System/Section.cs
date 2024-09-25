@@ -11,5 +11,18 @@ namespace ToDiList.Domain.Model.System
 
         public virtual ApplicationUser User { get; set; }
         public virtual ICollection<Task> Tasks { get; set; }
+
+
+        public Section
+            (
+                string Name,
+                string? Description,
+                Guid UserId
+            )
+        {
+            this.Name = Name;
+            this.Description= Description != null ? Description : string.Empty;
+            this.UserId = UserId;
+        }
     }
 }
