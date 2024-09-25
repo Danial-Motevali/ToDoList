@@ -1,6 +1,18 @@
+using ToDoList.Application;
+using ToDoList.Application.Settings;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+#region fill the Settings 
+
+builder.Services.Configure<IdentitySetting>(
+    builder.Configuration.GetSection(nameof(IdentitySetting)));
+
+#endregion
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
