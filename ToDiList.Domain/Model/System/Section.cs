@@ -10,7 +10,7 @@ namespace ToDiList.Domain.Model.System
         public Guid UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
-        public virtual ICollection<Task> Tasks { get; set; }
+        public virtual ICollection<ApplicationTask> Tasks { get; set; }
 
 
         public Section

@@ -2,7 +2,7 @@
 
 namespace ToDiList.Domain.Model.System
 {
-    public class Task : BaseModel<int>
+    public class ApplicationTask : BaseModel<int>
     {
         public string Name { get; set; }
         public string? Description { get; set; }
@@ -12,12 +12,12 @@ namespace ToDiList.Domain.Model.System
         public int? ParentId { get; set; }
         public int? GroupTaskId { get; set; }
 
-        public virtual Task? Steps { get; set; }
+        public virtual ApplicationTask? Steps { get; set; }
         public virtual Section Section { get; set; }
         public virtual GroupTask GroupTask { get; set; }
 
 
-        public Task
+        public ApplicationTask
             (
                 string Name,
                 string? Description,

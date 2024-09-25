@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDiList.Domain", "ToDiList
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Application", "ToDoList.Application\ToDoList.Application.csproj", "{D014F7C4-8A26-46B5-A2BF-0F8F8046D61F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistense", "Persistense\Persistense.csproj", "{963D6194-1A02-4899-BB0A-60BC18F65205}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Persistense", "Persistense\ToDoList.Persistense.csproj", "{963D6194-1A02-4899-BB0A-60BC18F65205}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
