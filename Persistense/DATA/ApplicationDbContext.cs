@@ -3,9 +3,9 @@ using ToDiList.Domain.Model.Security;
 using ToDiList.Domain.Model.System;
 using ToDoList.Application.Contract.dbContext;
 
-namespace Persistense.DATA.Database
+namespace ToDoList.Persistense.DATA
 {
-    public class ApplicationDbContext : DbContext , IApplicatioDbContext
+    public class ApplicationDbContext : DbContext, IApplicatioDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
