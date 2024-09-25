@@ -1,5 +1,6 @@
 using ToDoList.Application;
 using ToDoList.Application.Settings;
+using ToDoList.Persistense;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,12 @@ builder.Services.Configure<IdentitySetting>(
 
 #endregion
 
+#region Add services from other layers
 
+builder.Services.AddApplicatiouLayerServices();
+builder.Services.AddPersistenseServices(builder.Configuration);
+
+#endregion
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
