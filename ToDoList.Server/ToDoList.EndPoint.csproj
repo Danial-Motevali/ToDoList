@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.0" />
@@ -16,6 +17,7 @@
     <ProjectReference Include="..\Persistense\ToDoList.Persistense.csproj" />
     <ProjectReference Include="..\ToDiList.Domain\ToDiList.Domain.csproj" />
     <ProjectReference Include="..\ToDoList.Application\ToDoList.Application.csproj" />
+    <ProjectReference Include="..\ToDoList.Identity\ToDoList.Identity.csproj" />
   </ItemGroup>
 
 </Project>
