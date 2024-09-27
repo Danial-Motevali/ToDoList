@@ -5,7 +5,7 @@ using ToDiList.Domain.Model.Security;
 
 namespace ToDoList.Identity.Utilities
 {
-    public class TokenUtilty
+    public class TokenHelperUtilty
     {
         public string CreateToken(/*ApplicationUserDto user*/)
         {
