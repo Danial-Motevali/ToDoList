@@ -17,8 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Contract\AutoMapper\" />
     <Folder Include="Feature\Handler\" />
     <Folder Include="Feature\Query\" />
+    <Folder Include="MapperProfile\" />
   </ItemGroup>
 
 </Project>

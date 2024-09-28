@@ -18,7 +18,7 @@ builder.Services.Configure<IdentitySetting>(
 
 builder.Services.AddApplicatiouLayerServices();
 builder.Services.AddPersistenseServices(builder.Configuration);
-builder.Services.AddEndPointServices();
+//builder.Services.AddEndPointServices();
 
 #endregion
 
