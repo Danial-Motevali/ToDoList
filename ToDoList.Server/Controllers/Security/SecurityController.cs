@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ToDoList.Application.DTO;
+using ToDoList.Application.DTO.EndPointsDto;
 using ToDoList.EndPoint.Controllers.Base;
 
 namespace ToDoList.EndPoint.Controllers.Security

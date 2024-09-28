@@ -1,4 +1,4 @@
-﻿namespace ToDoList.Application.DTO
+﻿namespace ToDoList.Application.DTO.EndPointsDto
 {
     public class RegisterInputDto
     {
