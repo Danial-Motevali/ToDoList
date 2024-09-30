@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ToDoList.Application.DTO.EndPointsDto;
+using ToDoList.Application.Feature.Command;
 using ToDoList.EndPoint.Controllers.Base;
 
 namespace ToDoList.EndPoint.Controllers.Security
@@ -9,9 +10,23 @@ namespace ToDoList.EndPoint.Controllers.Security
 
         [HttpPost]
         [Route("sign-up")]
-        public IActionResult Register(RegisterInputDto input)
+        public async Task<IActionResult> Register(RegisterInputDto input)
         {
-            return Ok();
+            try
+            {
+                return ResultHandler<bool>
+                    (
+                        await Mediator.Send
+                        (
+                            Mapper.Map<RegisterCommand>(input)
+                        )
+                    );
+                
+
+            }catch (Exception ex) 
+            {
+                string message = ex.Message; return Ok(); 
+            }
         }
     }
 }
