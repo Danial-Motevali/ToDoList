@@ -9,6 +9,8 @@ namespace ToDoList.EndPoint.Extenstion
     {
         public static void AddEndPointServices(this IServiceCollection services, params Assembly[] assemblies)
         {
+            services.AddSwaggerGen();
+
             services.AddAutoMapper(config =>
             {
                 config.AddCustomMappingProfile();

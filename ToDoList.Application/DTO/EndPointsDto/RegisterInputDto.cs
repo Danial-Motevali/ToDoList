@@ -1,6 +1,9 @@
-﻿namespace ToDoList.Application.DTO.EndPointsDto
+﻿using ToDoList.Application.DTO.Base_Dto;
+using ToDoList.Application.Feature.Command;
+
+namespace ToDoList.Application.DTO.EndPointsDto
 {
-    public class RegisterInputDto
+    public class RegisterInputDto 
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
