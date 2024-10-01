@@ -11,10 +11,10 @@ namespace ToDoList.EndPoint.Controllers.Base
     public class BaseController : ControllerBase
     {
         private IMediator _mediator;
-        private IMapper _mapper;
+        private IMapper Mapper;
 
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
-        protected IMapper Mapper => _mapper ??= HttpContext.RequestServices.GetService<IMapper>();
+        protected IMapper _mapper => Mapper ??= HttpContext.RequestServices.GetService<IMapper>();
 
 
         protected ActionResult ResultHandler<T>(Result<T> result)

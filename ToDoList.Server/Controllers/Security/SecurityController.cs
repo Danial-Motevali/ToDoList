@@ -18,7 +18,7 @@ namespace ToDoList.EndPoint.Controllers.Security
                     (
                         await Mediator.Send
                         (
-                            Mapper.Map<RegisterCommand>(input)
+                            _mapper.Map<RegisterCommand>(input)
                         )
                     );
                 
@@ -28,5 +28,6 @@ namespace ToDoList.EndPoint.Controllers.Security
                 string message = ex.Message; return Ok(); 
             }
         }
+
     }
 }
