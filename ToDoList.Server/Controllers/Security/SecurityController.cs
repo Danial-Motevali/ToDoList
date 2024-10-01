@@ -10,7 +10,7 @@ namespace ToDoList.EndPoint.Controllers.Security
 
         [HttpPost]
         [Route("sign-up")]
-        public async Task<IActionResult> Register(RegisterInputDto input)
+        public async Task<IActionResult> Register(RegisterRequest input)
         {
             return ResultHandler
                 (

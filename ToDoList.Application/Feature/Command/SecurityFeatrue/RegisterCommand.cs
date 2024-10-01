@@ -5,7 +5,7 @@ using ToDoList.Application.DTO.EndPointsDto;
 
 namespace ToDoList.Application.Feature.Command.SecurityFeatrue
 {
-    public class RegisterCommand : BaseDto<RegisterCommand, RegisterInputDto>, IRequest<Result<bool>>
+    public class RegisterCommand : BaseDto<RegisterCommand, RegisterRequest>, IRequest<Result<bool>>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
