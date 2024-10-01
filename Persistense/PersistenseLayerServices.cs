@@ -5,9 +5,8 @@ namespace ToDoList.Persistense
 {
     public static class PersistenseLayerServices
     {
-        public static void AddPersistenseServices(this IServiceCollection sevice, IConfiguration configuration)
+        public static void AddPersistenseServices(this IServiceCollection sevicese, IConfiguration configuration)
         {
-
         }
     }
 }
