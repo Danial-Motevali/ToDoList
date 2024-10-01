@@ -7,11 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.EndPoint", "ToDoLi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDiList.Domain", "ToDiList.Domain\ToDiList.Domain.csproj", "{C6BB60EE-0E2C-4E96-B999-8F2A330A4F7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Application", "ToDoList.Application\ToDoList.Application.csproj", "{D014F7C4-8A26-46B5-A2BF-0F8F8046D61F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.Application", "ToDoList.Application\ToDoList.Application.csproj", "{D014F7C4-8A26-46B5-A2BF-0F8F8046D61F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Persistense", "Persistense\ToDoList.Persistense.csproj", "{963D6194-1A02-4899-BB0A-60BC18F65205}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.Persistense", "Persistense\ToDoList.Persistense.csproj", "{963D6194-1A02-4899-BB0A-60BC18F65205}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Identity", "ToDoList.Identity\ToDoList.Identity.csproj", "{77C577D9-5165-4751-BE2E-E22602BA03D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.Identity", "ToDoList.Identity\ToDoList.Identity.csproj", "{77C577D9-5165-4751-BE2E-E22602BA03D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityLayer", "IdentityLayer", "{FCF230E2-FE4C-47DB-A78F-65BFFC4025ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PersistenseLayer", "PersistenseLayer", "{270DA2DC-DA9D-4F78-B653-802B1B026381}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +46,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{963D6194-1A02-4899-BB0A-60BC18F65205} = {270DA2DC-DA9D-4F78-B653-802B1B026381}
+		{77C577D9-5165-4751-BE2E-E22602BA03D1} = {FCF230E2-FE4C-47DB-A78F-65BFFC4025ED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E07A6835-E553-4B77-9EDF-630508963B5B}
