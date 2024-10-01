@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using ToDiList.Domain.ErrorMessage;
 using ToDiList.Domain.Model.Security;
 using ToDiList.Domain.Repository;
 using ToDiList.Domain.ResultModel;
@@ -11,22 +12,29 @@ namespace ToDoList.Application.Feature.Handler.SecurityHandler
     public class RegisterCommandHandler : IRequestHandler<RegisterCommand, Result<bool>>
     {
         private readonly IRepository<ApplicationUser> _userRepo;
+        private readonly IApplicationUserRepository _specificUserRepo;
         private readonly IMapper _mapper;
         public RegisterCommandHandler
             (
                 IRepository<ApplicationUser> userRepo,
+                IApplicationUserRepository specificUserRepo,
                 IMapper mapper
             )
         {
+            _specificUserRepo = specificUserRepo;
             _userRepo = userRepo;
             _mapper = mapper;
         }
 
-        public Task<Result<bool>> Handle(RegisterCommand request, CancellationToken cancellationToken)
+        public async Task<Result<bool>> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
-            var dto = new ApplicationUserDto();
+            bool isEmailUniqie = await _specificUserRepo.IsUnique(request.Email);
+            if (!isEmailUniqie)
+                return Result<bool>.Faild(SecurityErrorMessage.NoUniquieValue);
 
-            ApplicationUser newUser = _mapper.Map<ApplicationUser>(dto);
+
+
+             //= _mapper.Map<ApplicationUser>(dto);
 
             throw new NotImplementedException();
         }
