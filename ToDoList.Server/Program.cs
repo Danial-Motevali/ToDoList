@@ -1,5 +1,6 @@
 using ToDoList.Application;
 using ToDoList.Application.Settings;
+using ToDoList.EndPoint.CustomMiddlware;
 using ToDoList.EndPoint.Extenstion;
 using ToDoList.Persistense;
 
@@ -35,6 +36,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<GlobalErrorMiddlware>();
 
 app.UseHttpsRedirection();
 
