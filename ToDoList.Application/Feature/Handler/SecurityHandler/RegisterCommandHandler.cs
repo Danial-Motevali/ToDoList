@@ -6,6 +6,7 @@ using ToDiList.Domain.Repository;
 using ToDiList.Domain.ResultModel;
 using ToDoList.Application.DTO.ModelDto;
 using ToDoList.Application.Feature.Command.SecurityFeatrue;
+using ToDoList.Identity.Utilities;
 
 namespace ToDoList.Application.Feature.Handler.SecurityHandler
 {
@@ -33,10 +34,9 @@ namespace ToDoList.Application.Feature.Handler.SecurityHandler
                 return Result<bool>.Faild(SecurityErrorMessage.NoUniquieValue);
 
 
+            ApplicationUser newUser = _mapper.Map<ApplicationUser>(request);
 
-             //= _mapper.Map<ApplicationUser>(dto);
-
-            throw new NotImplementedException();
+            return Result<bool>.Success(true);
         }
     }
 }

@@ -13,6 +13,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<IdentitySetting>(
     builder.Configuration.GetSection(nameof(IdentitySetting)));
 
+builder.Services.Configure<HashingSetting>(
+    builder.Configuration.GetSection(nameof(HashingSetting)));
+
 #endregion
 
 #region Add services from other layers
