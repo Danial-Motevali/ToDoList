@@ -12,6 +12,9 @@ namespace ToDiList.Domain.Model.System
         public virtual ApplicationUser User { get; set; }
         public virtual ICollection<ApplicationTask> Tasks { get; set; }
 
+        public Section()
+        {
+        }
 
         public Section
             (

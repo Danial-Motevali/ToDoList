@@ -20,6 +20,9 @@ namespace ToDiList.Domain.Model.Security
 
         public virtual ICollection<Section>? Section { get; private set; }
 
+        public ApplicationUser()
+        {
+        }
 
         public ApplicationUser
             (

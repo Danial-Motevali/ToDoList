@@ -16,6 +16,9 @@ namespace ToDiList.Domain.Model.System
         public virtual Section Section { get; set; }
         public virtual GroupTask GroupTask { get; set; }
 
+        public ApplicationTask()
+        {
+        }
 
         public ApplicationTask
             (

@@ -8,6 +8,9 @@ namespace ToDiList.Domain.Model.System
         public virtual ICollection<ApplicationTask>? Tasks { get; set; }
 
 
+        public GroupTask()
+        {
+        }
         public GroupTask
             (
                 string Name            

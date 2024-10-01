@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ToDiList.Domain.Model.Security;
 using ToDiList.Domain.Model.System;
-using ToDoList.Application.Contract.dbContext;
 
 namespace ToDoList.Persistense.DATA
 {
-    public class ApplicationDbContext : DbContext, IApplicatioDbContext
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
