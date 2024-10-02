@@ -6,6 +6,7 @@ namespace ToDoList.Persistense.UOW
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _context;
+        private bool _disposed = false; // To detect redundant calls
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
@@ -26,7 +27,24 @@ namespace ToDoList.Persistense.UOW
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    // Dispose managed resources  
+                    _context?.Dispose();
+                }
+
+                // Dispose unmanaged resources here (if any)  
+
+                _disposed = true;
+            }
         }
     }
 }
