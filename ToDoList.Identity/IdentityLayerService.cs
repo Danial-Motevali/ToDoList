@@ -11,6 +11,7 @@ namespace ToDoList.Identity
         public static void AddIdntityLayerService(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IHashPasswordHelperUtiltiy, HashPasswordHelperUtiltiy>();
+            services.AddScoped<ITokenHelperUtility, TokenHelperUtilty>();
         }
     }
 }
