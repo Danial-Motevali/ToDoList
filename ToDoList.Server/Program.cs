@@ -3,6 +3,7 @@ using ToDoList.Application.Settings;
 using ToDoList.EndPoint.CustomMiddlware;
 using ToDoList.EndPoint.Extenstion;
 using ToDoList.Persistense;
+using ToDoList.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.Configure<HashingSetting>(
 #region Add services from other layers
 
 builder.Services.AddApplicatiouLayerServices();
+builder.Services.AddIdntityLayerService(builder.Configuration);
 builder.Services.AddPersistenseServices(builder.Configuration);
 builder.Services.AddEndPointServices();
 
