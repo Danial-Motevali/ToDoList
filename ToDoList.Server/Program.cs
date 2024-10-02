@@ -44,6 +44,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseMiddleware<GlobalErrorMiddlware>();
 
+app.UseSession();
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
