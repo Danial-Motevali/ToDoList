@@ -27,7 +27,7 @@ namespace ToDoList.Application.Feature.Handler.SecurityHandler
 
         public async Task<Result<string>> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            ApplicationUser targetedUser = _userRepo.Get().Where(x => x.Email == request.Email).FirstOrDefault();
+            ApplicationUser? targetedUser = _userRepo.Get().Where(x => x.Email == request.Email).FirstOrDefault();
             if (targetedUser == null)
                 return Result<string>.Faild(SecurityErrorMessage.CantLoginTheUser);
 
