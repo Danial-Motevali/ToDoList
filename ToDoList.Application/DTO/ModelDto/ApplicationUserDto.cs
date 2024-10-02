@@ -1,7 +1,10 @@
 ﻿
+using ToDoList.Application.DTO.Base_Dto;
+using ToDoList.Application.Feature.Command.SecurityFeatrue;
+
 namespace ToDoList.Application.DTO.ModelDto
 {
-    public class ApplicationUserDto 
+    public class ApplicationUserDto : BaseDto<ApplicationUserDto, RegisterCommand>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
