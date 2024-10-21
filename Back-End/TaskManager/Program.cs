@@ -1,6 +1,11 @@
 
 using Microsoft.EntityFrameworkCore;
 using TaskManager.Application.Data;
+using TaskManager.Application.Repository;
+using TaskManager.Application.Services;
+using TaskManager.Domain.Contract.Repository;
+using TaskManager.Domain.Contract.Services;
+using TaskManager.Domain.SystemEntity;
 
 namespace TaskManager
 {
@@ -21,6 +26,10 @@ namespace TaskManager
             {
                 options.UseSqlite(builder.Configuration.GetConnectionString("SqlLite"));
             });
+
+            builder.Services.AddScoped<IUserService, UserServices>();
+
+            builder.Services.AddScoped<IGenericRepository<ApplicationUser>, GenericRepository<ApplicationUser>>();
 
             var app = builder.Build();
 
