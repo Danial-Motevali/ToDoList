@@ -6,6 +6,6 @@
         public string UserName { get; set; }
         public string PasswordHash { get; set; }
 
-        public virtual List<SystemTask> Tasks { get; set; }
+        public virtual List<SystemTask>? Tasks { get; set; }
     }
 }
