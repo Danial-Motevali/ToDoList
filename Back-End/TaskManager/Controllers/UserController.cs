@@ -21,10 +21,9 @@ namespace TaskManager.Controllers
 
 
 
-
         [HttpPost]
-        [Route("SignUp")]
-        public IActionResult SignUp(UserSignUpDto signUpInput)
+        [Route("Register")]
+        public IActionResult Register(UserSignUpDto signUpInput)
         {
             ResultDto result = new();
 
@@ -44,6 +43,31 @@ namespace TaskManager.Controllers
             }
 
             return Ok(result);
+        }
+
+
+
+        [HttpPost]
+        [Route("Login")]
+        public IActionResult Login(UserSignInDto signInInput)
+        {
+            string token = _userService.SignInAUser(signInInput.UserName, signInInput.Password);
+            if(token == null)
+            {
+               return Ok(new ResultDto()
+               {
+                   IsSuccess = false,
+                   Data = null,
+                   ErrorMessage = "Cant SignIn the User"
+               });
+            }
+
+            return Ok(new ResultDto()
+            {
+                IsSuccess = true,
+                Data = token,
+                ErrorMessage = "SignIn Successfuly"
+            });
         }
     }
 }
