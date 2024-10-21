@@ -1,7 +1,9 @@
-﻿namespace TaskManager.Domain.Contract.Services
+﻿using TaskManager.Application.Dto;
+
+namespace TaskManager.Domain.Contract.Services
 {
     public interface ITaskService
     {
-        bool AddNewTask(string name);
+        ResultDto AddNewTask(AddTaskDtoInput request);
     }
 }
