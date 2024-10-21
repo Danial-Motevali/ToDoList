@@ -7,7 +7,13 @@ namespace TaskManager.Application.Repository
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
         private readonly ApplicationDbContext _context;
-        private DbSet<TEntity> _dbSet; 
+        private DbSet<TEntity> _dbSet;
+
+        public GenericRepository(ApplicationDbContext context)
+        {
+            _context = context;
+            _dbSet = context.Set<TEntity>();    
+        }
 
         public List<TEntity> GetAll()
         {
