@@ -1,14 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Text;
-using TaskManager.Application.Data;
 using TaskManager.Domain.Contract.Repository;
 using TaskManager.Domain.Contract.Services;
 using TaskManager.Domain.SystemEntity;
+using TaskManager.Application.Utilities;
 
 namespace TaskManager.Application.Services
 {
@@ -32,18 +30,20 @@ namespace TaskManager.Application.Services
             ApplicationUser user = new()
             {
                 UserName = userName,
-                PasswordHash = password
+                PasswordHash = PasswordHasherHelper.CreateHash(password)
             };
+            if (user.PasswordHash == null)
+                return (false, "Cant SignUp a new User");
+
 
             (bool, ApplicationUser) result = _userRepo.Insert(user);
-
             if (result.Item1)
             {
                 return (true, null);
             }
             else
             {
-                return (false, "cant create a user");
+                return (false, "Cant SignUp a new User");
             }
         }
 
@@ -54,11 +54,11 @@ namespace TaskManager.Application.Services
             if (result == null)
                 return null;
 
-            if (result.PasswordHash != password)
+            bool validede = PasswordHasherHelper.ValidHash(password, result.PasswordHash);
+            if (!validede)
                 return null;
 
             return CreateAToken(userName, result.Id.ToString());
-
         }
 
         private string CreateAToken(string userName, string userId)
