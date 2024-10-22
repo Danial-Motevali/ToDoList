@@ -46,6 +46,28 @@ namespace TaskManager.Application.Services
             }
         }
 
+        public ResultDto ChangeCompletion(int id)
+        {
+            UserTask task = _userTaskRepo.GETById(id);
+            if(task == null)
+                return new ResultDto() { IsSuccess = false };
+
+            if(task.IsCompleted)
+            {
+                task.IsCompleted = false;
+            }
+            else
+            {
+                task.IsCompleted = true;
+            }
+
+            (bool, UserTask) result = _userTaskRepo.Update(task);
+            if (result.Item1)
+                return new ResultDto() { IsSuccess = true };
+
+            return new ResultDto() {IsSuccess = false};
+        }
+
         public async Task<ResultDto> GetALlTheTask(GetAllTaskFilter filter)
         {
             try

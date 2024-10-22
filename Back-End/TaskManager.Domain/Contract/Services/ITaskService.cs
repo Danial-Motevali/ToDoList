@@ -7,5 +7,6 @@ namespace TaskManager.Domain.Contract.Services
         ResultDto AddNewTask(AddTaskDtoInput request);
         Task<ResultDto> GetALlTheTask(GetAllTaskFilter filter);
         ResultDto RemoveTask(int id);
+        ResultDto ChangeCompletion(int id);
     }
 }

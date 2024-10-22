@@ -39,5 +39,13 @@ namespace TaskManager.Controllers
         {
             return Ok(_taskService.RemoveTask(id));
         }
+
+        [HttpPost]
+        [Route("ChangeCompletion")]
+        [Authorize]
+        public IActionResult ChangeCompletion([FromQuery] int id)
+        {
+            return Ok(_taskService.ChangeCompletion(id));
+        }
     }
 }
