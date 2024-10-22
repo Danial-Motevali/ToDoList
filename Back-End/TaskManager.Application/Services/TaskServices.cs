@@ -11,11 +11,11 @@ namespace TaskManager.Application.Services
     public class TaskServices : ITaskService
     {
         private readonly IHttpContextAccessor _httpContext;
-        private readonly IGenericRepository<UserTask> _userTaskRepo;
+        private readonly ITaskRepository _userTaskRepo;
         public TaskServices
             (
                 IHttpContextAccessor http,
-                IGenericRepository<UserTask> userTask
+                ITaskRepository userTask
             )
         {
             _httpContext = http;
@@ -44,6 +44,81 @@ namespace TaskManager.Application.Services
             {
                 return new ResultDto() { IsSuccess = false, ErrorMessage = "Cant Create a New Task"};
             }
+        }
+
+        public async Task<ResultDto> GetALlTheTask(GetAllTaskFilter filter)
+        {
+            try
+            {
+                ResultDto result = new();
+                int userId = _httpContext.HttpContext.GetUserId();
+
+                switch (filter.SearhTerms)
+                {
+                    case "All":
+                        result.Data = await _userTaskRepo.All(userId);
+                        break;
+
+                    case "AllAndDelete":
+                        result.Data = _userTaskRepo.AllAndDelete(userId);
+                        break;
+
+                    case "CompletedOnly":
+                        result.Data = _userTaskRepo.CompletedOnly(userId);
+                        break;
+
+                    case "DeletedOnly":
+                        result.Data = _userTaskRepo.DeletedOnly(userId);
+                        break;
+
+                    case "InProgressOnly":
+                        result.Data = _userTaskRepo.InProgressOnly(userId);
+                        break;
+
+                    default:
+                        result.Data = null;
+                        break;
+                }
+
+                if(result.Data == null)
+                    return new ResultDto() { IsSuccess = false, ErrorMessage = "Can`t bring any Task" };
+
+                result.IsSuccess = true;
+
+                return result;
+            }
+            catch (Exception ex) 
+            {
+                return new ResultDto()
+                {
+                    IsSuccess = false,
+                    ErrorMessage = "Can`t bring any Task"
+                };
+            }
+
+            throw new NotImplementedException();
+        }
+
+        public ResultDto RemoveTask(int id)
+        {
+            UserTask targetTask = _userTaskRepo.GETById(id);
+            if (targetTask == null)
+                return new ResultDto() { IsSuccess = false, ErrorMessage = "NO Task Found" };
+
+            if (targetTask.IsDeleted)
+            {
+                targetTask.IsDeleted = false;
+            }
+            else
+            {
+                targetTask.IsDeleted = true;
+            }
+
+            (bool, UserTask) result = _userTaskRepo.Update(targetTask);
+            if (result.Item1)
+                return new ResultDto() { IsSuccess = true };
+
+            return new ResultDto() { IsSuccess = false };
         }
     }
 }
