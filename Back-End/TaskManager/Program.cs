@@ -59,6 +59,7 @@ namespace TaskManager
             builder.Services.AddScoped<ITaskService, TaskServices>();
 
             builder.Services.AddScoped<IGenericRepository<ApplicationUser>, GenericRepository<ApplicationUser>>();
+            builder.Services.AddScoped<IGenericRepository<UserTask>, GenericRepository<UserTask>>();
 
 
             var app = builder.Build();

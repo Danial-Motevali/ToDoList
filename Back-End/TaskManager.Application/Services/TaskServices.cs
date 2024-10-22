@@ -2,24 +2,48 @@
 using System.Security.Claims;
 using TaskManager.Application.Dto;
 using TaskManager.Application.Utilities;
+using TaskManager.Domain.Contract.Repository;
 using TaskManager.Domain.Contract.Services;
+using TaskManager.Domain.SystemEntity;
 
 namespace TaskManager.Application.Services
 {
     public class TaskServices : ITaskService
     {
         private readonly IHttpContextAccessor _httpContext;
-        public TaskServices(IHttpContextAccessor http)
+        private readonly IGenericRepository<UserTask> _userTaskRepo;
+        public TaskServices
+            (
+                IHttpContextAccessor http,
+                IGenericRepository<UserTask> userTask
+            )
         {
             _httpContext = http;
+            _userTaskRepo = userTask;
         }
 
         public ResultDto AddNewTask(AddTaskDtoInput request)
         {
-            var test = _httpContext.HttpContext.GetUserId();
-                //.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            UserTask task = new();
 
-            return new ResultDto();
+            try
+            {
+                int currentUserId = _httpContext.HttpContext.GetUserId();
+
+                task.UserId = currentUserId;
+                task.Name = request.TaskName;
+
+                (bool, UserTask) result = _userTaskRepo.Insert(task);
+                if(!result.Item1)
+                    return new ResultDto() { IsSuccess = false };
+
+                return new ResultDto() { IsSuccess = true};
+
+            }
+            catch (Exception ex) 
+            {
+                return new ResultDto() { IsSuccess = false, ErrorMessage = "Cant Create a New Task"};
+            }
         }
     }
 }
