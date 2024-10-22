@@ -10,7 +10,7 @@ namespace TaskManager.Application.Data
         }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-        public DbSet<UserTask> SystemTasks { get; set; }
+        public DbSet<UserTask> UserTasks { get; set; }
 
     }
 }
