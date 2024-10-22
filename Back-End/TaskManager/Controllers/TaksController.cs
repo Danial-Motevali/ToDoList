@@ -23,5 +23,21 @@ namespace TaskManager.Controllers
         {
             return Ok(_taskService.AddNewTask(input));
         }
+
+        [HttpGet]
+        [Route("AllTasks")]
+        [Authorize]
+        public async Task<IActionResult> GetAllTask([FromQuery] GetAllTaskFilter filter)
+        {
+            return Ok(await _taskService.GetALlTheTask(filter));
+        }
+
+        [HttpPost]
+        [Route("DeleteOrUnDelete")]
+        [Authorize]
+        public IActionResult DeleteOrUnDelete([FromQuery] int id)
+        {
+            return Ok(_taskService.RemoveTask(id));
+        }
     }
 }
