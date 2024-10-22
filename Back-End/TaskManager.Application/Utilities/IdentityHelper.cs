@@ -9,7 +9,7 @@ namespace TaskManager.Application.Utilities
     {
         public static int GetUserId(this HttpContext httpContext)
         {
-            return 1;
+            return Convert.ToInt32(httpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
         }
     }
 }
